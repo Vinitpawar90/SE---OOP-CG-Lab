@@ -1,0 +1,63 @@
+#include<iostream>
+using namespace std;
+template<typename T>
+void sort(T a[], int n)
+{
+int pos_min, i;
+T temp;
+for(int i=0; i<=n-1; i++)
+{
+pos_min=i;
+for(int j=i+1;j<n;j++)
+{
+if(a[j]<a[pos_min])
+pos_min=j;
+}
+if(pos_min!=i)
+{
+temp=a[i];
+a[i]=a[pos_min];
+a[pos_min]=temp;
+}
+}
+cout<<"\n\tSorted elements are:\n";
+for(i=0;i<n;i++)
+cout<<"\t"<<a[i];
+}
+int main()
+{
+int n,i,ch;
+int a[10];
+float b[10];
+do
+{
+cout<<"\n\tSELECTION SORT USING FUNCTION TEMPLATE";
+cout<<"\n\t1.Sort Integer Number\n\t2.Sort Float Number\n\t3.Exit";
+cout<<"\n\tEnter your choice:";
+cin>>ch;
+switch(ch)
+{
+case 1:
+cout<<"\n\tSorting integer numbers";
+cout<<"\n\tEnter how numbers to be sorted:";
+cin>>n;
+cout<<"\n\tEnter the numbers:";
+for(i=0;i<n;i++)
+cin>>a[i];
+sort<int>(a,n);
+break;
+case 2:
+cout<<"\n\tSorting floating point numbers";
+cout<<"\n\tEnter how numbers to be sorted:";
+cin>>n;
+cout<<"\n\tEnter the numbers:";
+for(i=0;i<n;i++)
+cin>>b[i];
+sort<float>(b,n);
+break;
+case 3:
+exit(0);
+}
+}while(ch!=3);
+return 0;
+}

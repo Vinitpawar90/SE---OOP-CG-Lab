@@ -1,0 +1,79 @@
+#include<iostream>
+#include<cstring>
+using namespace std;
+int main()
+{
+int age;
+int income;
+char city[15];
+int vehicle;
+cout<<"\n\tEnter age:";
+cin>>age;
+try
+{
+if(age<18||age>55)
+{
+throw age;
+}
+else
+{
+cout<<"\n\tAge:"<<age;
+}
+}
+catch(int)
+{
+cout<<"\n\tInvalid age entered!";
+}
+cout<<"\n\tEnter Income:";
+cin>>income;
+try
+{
+if(income<50000||income>100000)
+{
+throw income;
+}
+else
+{
+cout<<"\n\tIncome :Rs."<<income;
+}
+}
+catch(int)
+{
+cout<<"\n\tInvalid Income entered!";
+}
+cout<<"\n\tEnter type of vehicle(2/4):";
+cin>>vehicle;
+try
+{
+if(vehicle==2 || vehicle==4)
+{
+throw vehicle;
+}
+else
+{
+cout<<"\n\tInvalid type of vehicle entered!";
+}
+}
+catch(int)
+{
+cout<<"\n\tType of vehicle is "<<vehicle<<" wheeler";
+}
+cout<<"\n\tEnter city:";
+cin>>city;
+try
+{
+if(strcmp(city,"Pune") && strcmp(city,"Mumbai") && strcmp(city,"Banglore")
+&& strcmp(city,"Chennai"))
+{
+throw city;
+}
+else
+{
+cout<<"\n\tEntered city is:"<<city;
+}
+}
+catch(char[])
+{
+cout<<"\n\tCity entered does not match!";
+}
+}

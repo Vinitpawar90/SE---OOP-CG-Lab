@@ -1,0 +1,122 @@
+#include<iostream>
+using namespace std;
+class publication
+{
+private:
+string title;
+float price;
+public:
+void add()
+{
+cout<<"Enter the information of publication:"<<endl;
+cout<<"Enter the title of publication:"<<endl;
+cin.ignore();
+getline(cin,title);
+cout<<"Enter the price of publication:"<<endl;
+cin>>price;
+}
+void display()
+{
+cout<<"Title of the publication:"<<title<<endl;
+cout<<"Price of the publication:"<<price<<endl;
+}
+};
+class book : public publication
+{
+private:
+int page_count;
+public:
+void add_book()
+{
+try
+{
+add();
+cout<<"Enter the page count:"<<endl;
+cin>>page_count;
+if(page_count<=0)
+throw page_count=0;
+}
+catch(...)
+{
+cout<<"invalide page count"<<endl;
+page_count=0;
+}
+}
+void display_book()
+{
+display();
+cout<<"page count"<<page_count<<endl;
+}
+};
+class tape : public publication
+{
+private:
+float play_time;
+public:
+void add_tape()
+{
+try
+{
+add();
+cout<<"Enter the play time:"<<endl;
+cin>>play_time;
+if(play_time<=0)
+throw play_time=0;
+}
+catch(...)
+{
+cout<<"invalide play time"<<endl;
+play_time=0;
+}
+}
+void display_tape()
+{
+display();
+cout<<"play time is"<<play_time<<"min"<<endl;
+}
+};
+int main()
+{
+book b1[10];
+tape t1[10];
+int ch=0,b_count=0,t_count=0;
+do
+{
+cout<<"Publication details:"<<endl;
+cout<<"1.Add book details:"<<endl;
+cout<<"2.Display tape details:"<<endl;
+cout<<"3.Display book details:"<<endl;
+cout<<"4.Display tape details:"<<endl;
+cout<<"5.Exit"<<endl;
+cout<<"Enter the choice:"<<endl;
+cin>>ch;
+switch(ch)
+{
+case 1:
+b1[b_count].add_book();
+b_count++;
+break;
+case 2:
+t1[t_count].add_tape();
+t_count++;
+break;
+case 3:
+cout<<"Publication information system(Books):"<<endl;
+for(int j=0; j<b_count; j++)
+{
+b1[j].display_book();
+}
+break;
+case 4:
+cout<<"Publication information system(Tapes):"<<endl;
+for(int j=0; j<t_count; j++)
+{
+t1[j].display_tape();
+}
+break;
+case 5:
+exit(0);
+}
+}while(ch!=5);
+return 0;
+}
